@@ -1,5 +1,5 @@
 import { Null } from './utils/common.ts';
-import { Undefined} from './utils/common.ts';  // no space on the right intentionally
+import { Undefined} from './utils/common.ts';
 import React from 'react';
 import { Button } from "antd";
 

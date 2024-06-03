@@ -1,26 +1,53 @@
-import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import stylistPlugin from '@stylistic/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
+import globals from 'globals';
+import parser from '@typescript-eslint/parser';
+
 
 export default tseslint.config(
-    {
-        plugins: {
-            '@stylistic': stylistPlugin,
-        }
+  {
+    name: 'plugins',
+    plugins: {
+      ['@typescript-eslint']: tseslint.plugin,
     },
-    {
-        files: ['src/**/*.tsx'],
-        languageOptions: {
-            parser: tsParser,
-            parserOptions: {
-                project: './tsconfig.json',
-                tsconfigRootDir: '.',
-                jsx: true,
-            }
+  },
+    
+  {
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.es2015,
+      },
+      parserOptions: {
+        allowAutomaticSingleRunInference: true,
+        project: ['tsconfig.json'],
+        tsconfigRootDir: '.',
+      }
+    },
+  },
+
+  {
+    name: 'src',
+    files: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.mts', 'src/**/*.cts'],
+    extends: tseslint.configs.recommendedTypeChecked,
+    languageOptions: {
+      parser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true
         },
-        rules: {
-            "@stylistic/object-curly-spacing": ["error", "always"]
-        }
+        sourceType: 'module',
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.mocha,
+        ...globals.jest,
+        ...globals.jasmine,
+      },
     },
+    rules: {
+      '@typescript-eslint/consistent-type-imports': 'error',
+    }
+  },
+
+    
 );
