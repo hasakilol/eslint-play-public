@@ -5,7 +5,7 @@ import { Button } from "antd";
 
 interface TestProps {
   onClick: (
-    item?: { a: string; } | typeof Null | typeof Undefined,
+    item: { a: string; } | typeof Null | typeof Undefined,
     selected?: boolean,
   ) => void;
 

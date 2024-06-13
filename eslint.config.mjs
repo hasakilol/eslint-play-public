@@ -46,6 +46,7 @@ export default tseslint.config(
     },
     rules: {
       '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/no-duplicate-type-constituents': 'error'
     }
   },
 
