@@ -1,6 +1,3 @@
-# This repo is readonly because it's referenced here: https://github.com/typescript-eslint/typescript-eslint/issues/9344
-
-
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
